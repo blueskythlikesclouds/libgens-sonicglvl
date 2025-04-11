@@ -353,10 +353,7 @@ hkpConvexShape* HKWindow::convertMeshToConvexShape(aiMesh* mesh, LibGens::Vector
 			return new hkpBoxShape(halfExtents);
 		}
 		if (tag.getKey() == "SPHERE") {
-
-			// TODO: For accuracy's sake, instead of getting the largest AABB direction, loop through all points & get the longest squared distance to the center.
-			// This cheap method will work OKAY for now, but won't guarantee a fit around the object.
-			return new hkpSphereShape(aabb.sizeMax() * 0.5f);
+			return new hkpSphereShape(aabb.radius());
 		}
 		if (tag.getKey() == "CYLINDER" || tag.getKey() == "CYL" || tag.getKey() == "CAPSULE") {
 
